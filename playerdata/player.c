@@ -14,7 +14,7 @@ void set_player_name(const char *name) {
 // Function to equip gear
 void equip_gear(Player *player, Gear gear, GearType type) {
     player->equippedGear[type] = gear;
-    // Depending on your design, you might want to update player stats here
+    // Depending on design, might want to update player stats here
 }
 
 // Initialize player with default gear
