@@ -1,3 +1,6 @@
 Name: James
 Health: 100
 Gold: 50
+Weapon: Bronze Sword
+Armor: Bronze Armor
+Shield: Bronze Shield
