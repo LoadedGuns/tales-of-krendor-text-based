@@ -130,3 +130,13 @@ Gear create_obsidian_shield() {
 }
 
 //God Items
+
+//Rings/Amulets (Add In Later)
+
+//Magic Gear (Add In Later)
+
+//Runes (Add In Later)
+
+//Range Gear (Add In Later) Include Bows/Crossbows and Arrows/Bolts
+
+//Skilling Items (Consider Fishing, Cooking, Mining, Smithing, Woodcutting, Fletching)
