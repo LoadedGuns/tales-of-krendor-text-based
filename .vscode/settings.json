@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		".fantomasignore": "ignore",
+		"time.h": "c",
+		"stdlib.h": "c",
+		"windows.h": "c",
+		"gear.h": "c",
+		"player.h": "c"
+	}
+}

@@ -1,0 +1,3 @@
+Name: James
+Health: 100
+Gold: 50

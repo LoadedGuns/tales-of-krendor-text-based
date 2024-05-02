@@ -1,0 +1,18 @@
+scanf()
+%d: reads an integer value
+%f: reads a floating-point value
+%c: reads a single character
+%s: reads a string of characters
+%lf: reads a double-precision floating-point value
+
+int number;
+printf("Enter a number: ");
+scanf("%d", &number);
+
+####################################################
+
+To compile and run
+gcc -o main main.c
+main.exe
+
+####################################################

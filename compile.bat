@@ -1,0 +1,1 @@
+gcc -o game main.c playerdata/player.c gear/gear.c
