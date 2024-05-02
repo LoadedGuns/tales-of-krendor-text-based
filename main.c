@@ -26,5 +26,22 @@ int main(void) {
            player.equippedGear[ARMOR].name,
            player.equippedGear[SHIELD].name);
 
+
+    //TESTING EQUIP GEAR FUNCTIONS (Remove after all testing done)
+    Gear ironsword = create_iron_sword();
+    Gear ironarmor = create_iron_armor();
+    Gear ironshield = create_iron_shield();
+
+    equip_gear(&player, ironsword, WEAPON);
+    equip_gear(&player, ironarmor, ARMOR);
+    equip_gear(&player, ironshield, SHIELD);
+
+    save_player_data();
+    printf("Player %s is equipped with:\n", player.playerName);
+    printf("Weapon: %s\n", player.equippedGear[WEAPON].name);
+    printf("Armor: %s\n", player.equippedGear[ARMOR].name);
+    printf("Shield: %s\n", player.equippedGear[SHIELD].name);
+    //FUNCTIONS CORRECT (Test later switch cases for equipping gear from loot table or bought in shops)
+
     return 0;
 }
