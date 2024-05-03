@@ -16,3 +16,15 @@ gcc -o main main.c
 main.exe
 
 ####################################################
+
+Terminal Commands
+
+cd - change directory
+cp - copy
+ls - list files/directories in current directory
+mkdir - make directory
+mv - rename file
+rm - remove file
+rmdir - remove directory
+
+####################################################
