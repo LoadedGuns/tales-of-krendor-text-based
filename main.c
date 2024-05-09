@@ -74,7 +74,7 @@ int main(void) {
     printf("Shield: %s\n", player.equippedGear[SHIELD].name);
     //FUNCTIONS CORRECT (Test later switch cases for equipping gear from loot table or bought in shops)
 
-    // Goblin encounter
+    // Goblin encounter test
     Goblin myGoblin = {.health = 15, .power = 5, .armor = 3};
     goblin_encounter(&myGoblin, &player);
 
