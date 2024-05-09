@@ -1,6 +1,0 @@
-Name: James
-Health: 92
-Gold: 61
-Weapon: Iron Sword
-Armor: Iron Armor
-Shield: Iron Shield
