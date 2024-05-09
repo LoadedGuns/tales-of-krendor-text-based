@@ -5,6 +5,9 @@
 		"stdlib.h": "c",
 		"windows.h": "c",
 		"gear.h": "c",
-		"player.h": "c"
+		"player.h": "c",
+		"string.h": "c",
+		"goblin.h": "c",
+		"orc.h": "c"
 	}
 }

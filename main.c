@@ -3,7 +3,10 @@
 #include <string.h>
 #include <time.h>
 #include <windows.h>
-#include "playerdata/player.h"
+#include "playerdata\player.h"
+#include "npcs\goblin\goblin.h"
+#include "npcs\orc\orc.h"
+#include "combat\combat.h"
 
 int main(void) {
     printf("Welcome to Tales Of Krendor, a text-based adventure game created by James Sweetsir!\n");
@@ -70,6 +73,10 @@ int main(void) {
     printf("Armor: %s\n", player.equippedGear[ARMOR].name);
     printf("Shield: %s\n", player.equippedGear[SHIELD].name);
     //FUNCTIONS CORRECT (Test later switch cases for equipping gear from loot table or bought in shops)
+
+    // Goblin encounter
+    Goblin myGoblin = {.health = 15, .power = 5, .armor = 3};
+    goblin_encounter(&myGoblin, &player);
 
     return 0;
 }
