@@ -16,5 +16,6 @@ void set_player_name(const char *name);
 void equip_gear(Player *player, Gear gear, GearType type);
 void initialize_player(void);
 void save_player_data(void);
+void load_player_data(void);
 
 #endif // PLAYER_H

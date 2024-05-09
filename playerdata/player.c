@@ -15,6 +15,7 @@ void set_player_name(const char *name) {
 void equip_gear(Player *player, Gear gear, GearType type) {
     player->equippedGear[type] = gear;
     printf("New gear equipped in slot %d: %s\n", type, gear.name);
+    save_player_data();
 }
 
 // Initialize player with default gear
@@ -50,5 +51,21 @@ void save_player_data(void) {
         fclose(file);
     } else {
         perror("Failed to save player data");
+    }
+}
+
+void load_player_data(void) {
+    FILE *file = fopen("playerdata.txt", "r");
+    if (file != NULL) {
+        // Loads player details
+        fscanf(file, "Name: %s\nHealth: %d\nGold: %d\n", &player.playerName, &player.health, &player.gold);
+        // Loads player gear
+        fscanf(file, "Weapon: %s", &player.equippedGear[WEAPON].name);
+        fscanf(file, "Armor: %s", &player.equippedGear[ARMOR].name);
+        fscanf(file, "Shield: %s", &player.equippedGear[SHIELD].name);
+
+        fclose(file);
+    } else {
+        perror("Failed to load player data");
     }
 }

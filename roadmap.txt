@@ -1,1 +1,36 @@
+*******************************************************************
 Skills/Skilling Items for crafting and utility supplies
+*******************************************************************
+
+
+
+
+*******************************************************************
+Change over so the text displays slot names rather then numbers
+New gear equipped in slot 0: Iron Sword
+New gear equipped in slot 1: Iron Armor
+New gear equipped in slot 2: Iron Shield
+*******************************************************************
+
+
+
+
+*******************************************************************
+if else statement for loading or starting a new player on startup
+also check into data transfer as seen below
+Name: James
+Health: 100
+Gold: 50
+Weapon: Iron
+Armor:
+Shield:
+Look for a way to read the string and execute the correct function to equip gear
+*******************************************************************
+
+
+
+
+*******************************************************************
+start work on krendor castle and forest outside castle
+add in first NPC (goblin)
+*******************************************************************
