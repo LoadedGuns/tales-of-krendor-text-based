@@ -65,8 +65,10 @@ if (save_load == 'l') {
         equip_gear(&player, ironsword, WEAPON);
         equip_gear(&player, ironarmor, ARMOR);
         equip_gear(&player, ironshield, SHIELD);
+        getchar();
     } else if (testAnswer == 'n') {
         printf("You leave the gear inside the chest and move on! \n");
+        getchar();
     } else {
         printf("Invalid answer, please enter Y or N: ");
     }
