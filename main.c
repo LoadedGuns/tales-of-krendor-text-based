@@ -19,7 +19,6 @@ int main(void) {
     printf("Would you like to load a saved game, or start over? (L/N): ");
     save_load = getchar();
     save_load = tolower(save_load);
-    getchar();
 
 if (save_load == 'l') {
     // Block to load player data and display for testing
@@ -30,6 +29,7 @@ if (save_load == 'l') {
     printf("Weapon: %s\n", player.equippedGear[WEAPON].name);
     printf("Armor: %s\n", player.equippedGear[ARMOR].name);
     printf("Shield: %s\n", player.equippedGear[SHIELD].name);
+    getchar();
 } else if (save_load == 'n') {
     char playerName[50];
     printf("Please enter your name: ");
@@ -39,8 +39,9 @@ if (save_load == 'l') {
     initialize_player();  // Ensure player is properly initialized with default gear
     save_player_data();   // Save initial player data
     printf("Welcome to The Kingdom of Krendor, %s!\n", playerName);
+    getchar();
 } else {
-    printf("Invalid answer, please type load or new!/n");
+    printf("Invalid answer, please type L or N!\n");
     exit(1);
 }
     Sleep(1500);

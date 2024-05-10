@@ -42,15 +42,16 @@ void save_player_data(void) {
     if (file != NULL) {
         // Saves player details
         fprintf(file, "Name: %s\nHealth: %d\nGold: %d\n", player.playerName, player.health, player.gold);
-
-        //Saves player gear
+        
+        // Saves player gear
         fprintf(file, "Weapon: %s\n", player.equippedGear[WEAPON].name);
         fprintf(file, "Armor: %s\n", player.equippedGear[ARMOR].name);
         fprintf(file, "Shield: %s\n", player.equippedGear[SHIELD].name);
-
+        
         fclose(file);
     } else {
         perror("Failed to save player data");
+        // Consider what should happen here - maybe return an error code or set a status flag
     }
 }
 
@@ -58,14 +59,17 @@ void load_player_data(void) {
     FILE *file = fopen("playerdata.txt", "r");
     if (file != NULL) {
         // Loads player details
-        fscanf(file, "Name: %s\nHealth: %d\nGold: %d\n", &player.playerName, &player.health, &player.gold);
-        // Loads player gear
-        fscanf(file, "Weapon: %[^\n]\n", player.equippedGear[WEAPON].name);
-        fscanf(file, "Armor: %[^\n]\n", player.equippedGear[ARMOR].name);
-        fscanf(file, "Shield: %[^\n]\n", player.equippedGear[SHIELD].name);
+        fscanf(file, "Name: %49[^\n]\nHealth: %d\nGold: %d\n", player.playerName, &player.health, &player.gold);
 
+        // Loads player gear
+        fscanf(file, "Weapon: %49[^\n]\n", player.equippedGear[WEAPON].name);
+        fscanf(file, "Armor: %49[^\n]\n", player.equippedGear[ARMOR].name);
+        fscanf(file, "Shield: %49[^\n]\n", player.equippedGear[SHIELD].name);
+        
         fclose(file);
     } else {
         perror("Failed to load player data");
+        // Consider what should happen here - maybe return an error code or set a status flag
     }
 }
+
