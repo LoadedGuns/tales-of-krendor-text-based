@@ -15,6 +15,13 @@ int main(void) {
     printf("Welcome to Tales Of Krendor, a text-based adventure game created by James Sweetsir!\n");
     Sleep(2000);
 
+    char save_load;
+    printf("Would you like to load a saved game, or start over? (L/N): ");
+    save_load = getchar();
+    save_load = tolower(save_load);
+    getchar();
+
+if (save_load == 'l') {
     // Block to load player data and display for testing
     load_player_data();
     printf("Name: %s\n", player.playerName);
@@ -23,19 +30,20 @@ int main(void) {
     printf("Weapon: %s\n", player.equippedGear[WEAPON].name);
     printf("Armor: %s\n", player.equippedGear[ARMOR].name);
     printf("Shield: %s\n", player.equippedGear[SHIELD].name);
-
+} else if (save_load == 'n') {
     char playerName[50];
     printf("Please enter your name: ");
     fgets(playerName, sizeof(playerName), stdin);
     playerName[strcspn(playerName, "\n")] = 0;
-
     set_player_name(playerName);
-    
     initialize_player();  // Ensure player is properly initialized with default gear
-
     save_player_data();   // Save initial player data
-    Sleep(1500);
     printf("Welcome to The Kingdom of Krendor, %s!\n", playerName);
+} else {
+    printf("Invalid answer, please type load or new!/n");
+    exit(1);
+}
+    Sleep(1500);
 
     // Potentially print out equipped gear for debugging
     printf("You are equipped with: \nWeapon: %s\nArmor: %s\nShield: %s\n",
@@ -47,7 +55,7 @@ int main(void) {
     printf("You are walking down the road, and find an old chest, as you open it you find some armor and weapons, would you like to equip them? Y or N: ");
     testAnswer = getchar();
     testAnswer = tolower(testAnswer);
-    if (testAnswer = 'y') {
+    if (testAnswer == 'y') {
         printf("You grab and put on the gear, made of iron, it is stronger then what you currently have on! \n");
         Gear ironsword = create_iron_sword();
         Gear ironarmor = create_iron_armor();
@@ -56,7 +64,7 @@ int main(void) {
         equip_gear(&player, ironsword, WEAPON);
         equip_gear(&player, ironarmor, ARMOR);
         equip_gear(&player, ironshield, SHIELD);
-    } else if (testAnswer = 'n') {
+    } else if (testAnswer == 'n') {
         printf("You leave the gear inside the chest and move on! \n");
     } else {
         printf("Invalid answer, please enter Y or N: ");
