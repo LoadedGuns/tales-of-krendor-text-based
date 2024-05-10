@@ -1,6 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+// #define WEAPON 0
+// #define ARMOR 1
+// #define SHIELD 2
+
 #include "../gear/gear.h"  // Include gear definitions here
 
 typedef struct {

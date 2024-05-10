@@ -60,9 +60,9 @@ void load_player_data(void) {
         // Loads player details
         fscanf(file, "Name: %s\nHealth: %d\nGold: %d\n", &player.playerName, &player.health, &player.gold);
         // Loads player gear
-        fscanf(file, "Weapon: %s", &player.equippedGear[WEAPON].name);
-        fscanf(file, "Armor: %s", &player.equippedGear[ARMOR].name);
-        fscanf(file, "Shield: %s", &player.equippedGear[SHIELD].name);
+        fscanf(file, "Weapon: %[^\n]\n", player.equippedGear[WEAPON].name);
+        fscanf(file, "Armor: %[^\n]\n", player.equippedGear[ARMOR].name);
+        fscanf(file, "Shield: %[^\n]\n", player.equippedGear[SHIELD].name);
 
         fclose(file);
     } else {

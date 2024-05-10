@@ -4,6 +4,24 @@
 #include <windows.h>
 #include "combat.h"
 
+// Function to generate a random number in a specific range [min, max]
+int random_range(int min, int max) {
+    return rand() % (max - min + 1) + min;
+}
+
+// Test Function to add values from gear power pulled from string in the load player data function
+// int random_range(int min, int max) {
+//     return rand() % (player_power() - player_power() + random_range(1, 3) + player_power());
+// }
+
+// int player_power(p) {
+
+// }
+
+// int player_armor(a) {
+
+// }
+
 void goblin_encounter(Goblin *goblin, Player *player) {
     Goblin_Drop_Table goblin_drop_table = {.gold = 0};
 
@@ -17,10 +35,10 @@ void goblin_encounter(Goblin *goblin, Player *player) {
     }
 
     while (goblin->health > 0) {
-        int attack_damage = rand() % 8 + 3;  // Player's attack (3 to 10)
+        int attack_damage = random_range(5, 10);  // Player's attack
         int mitigated_damage = attack_damage - goblin->armor;
         if (mitigated_damage < 0) mitigated_damage = 0;
-        printf("You attack the goblin and deal %d damage.\n", mitigated_damage);
+        printf("You attack the goblin and deal %d damage. The Goblin has %d health left.\n", mitigated_damage, goblin->health);
         goblin->health -= mitigated_damage;
         Sleep(1500);
 
@@ -32,10 +50,9 @@ void goblin_encounter(Goblin *goblin, Player *player) {
             save_player_data();
             break;
         } else {
-            printf("The goblin has %d health left.\n", goblin->health);
 
             // Goblin attacks the player
-            int goblin_attack = rand() % goblin->power + 1;
+            int goblin_attack = random_range(goblin->power, random_range(1, 5));
             player->health -= goblin_attack;
             printf("The goblin attacks you and deals %d damage. You have %d health left.\n", goblin_attack, player->health);
             Sleep(1500);
@@ -61,10 +78,10 @@ void orc_encounter(Orc *orc, Player *player) {
     }
 
     while (orc->health > 0) {
-        int attack_damage = rand() % 10 + 5;  // Player's attack (5 to 14)
+        int attack_damage = random_range(5, 14);  // Player's attack
         int mitigated_damage = attack_damage - orc->armor;
         if (mitigated_damage < 0) mitigated_damage = 0;
-        printf("You attack the orc and deal %d damage.\n", mitigated_damage);
+        printf("You attack the orc and deal %d damage. The orc has %d health left.\n", mitigated_damage, orc->health);
         orc->health -= mitigated_damage;
         Sleep(1500);
 
@@ -76,10 +93,9 @@ void orc_encounter(Orc *orc, Player *player) {
             save_player_data();
             break;
         } else {
-            printf("The orc has %d health left.\n", orc->health);
 
             // Orc attacks the player
-            int orc_attack = rand() % orc->power + 1;
+            int orc_attack = random_range(orc->power, random_range(1, 5));
             player->health -= orc_attack;
             printf("The orc attacks you and deals %d damage. You have %d health left.\n", orc_attack, player->health);
             Sleep(1500);

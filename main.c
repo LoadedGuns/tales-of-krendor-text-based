@@ -9,6 +9,9 @@
 #include "combat\combat.h"
 
 int main(void) {
+    // Initialize random number generator
+    srand(time(NULL));
+
     printf("Welcome to Tales Of Krendor, a text-based adventure game created by James Sweetsir!\n");
     Sleep(2000);
 
@@ -27,6 +30,7 @@ int main(void) {
     playerName[strcspn(playerName, "\n")] = 0;
 
     set_player_name(playerName);
+    
     initialize_player();  // Ensure player is properly initialized with default gear
 
     save_player_data();   // Save initial player data
@@ -75,8 +79,12 @@ int main(void) {
     //FUNCTIONS CORRECT (Test later switch cases for equipping gear from loot table or bought in shops)
 
     // Goblin encounter test
-    Goblin myGoblin = {.health = 15, .power = 5, .armor = 3};
-    goblin_encounter(&myGoblin, &player);
+    // Goblin goblin = {.health = 15, .power = 5, .armor = 3};
+    // goblin_encounter(&goblin, &player);
+
+    // Orc counter test
+    Orc orc = {.health = 35, .power = 10, .armor = 5};
+    orc_encounter(&orc, &player);
 
     return 0;
 }

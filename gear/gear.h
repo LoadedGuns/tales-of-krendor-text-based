@@ -1,6 +1,7 @@
 #ifndef GEAR_H
 #define GEAR_H
 
+
 typedef enum {
     WEAPON,
     ARMOR,
