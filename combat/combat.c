@@ -35,11 +35,11 @@ void goblin_encounter(Goblin *goblin, Player *player) {
     }
 
     while (goblin->health > 0) {
-        int attack_damage = random_range(5, 10);  // Player's attack
+        int attack_damage = random_range(5, 10); // Player's attack
         int mitigated_damage = attack_damage - goblin->armor;
         if (mitigated_damage < 0) mitigated_damage = 0;
-        printf("You attack the goblin and deal %d damage. The Goblin has %d health left.\n", mitigated_damage, goblin->health);
         goblin->health -= mitigated_damage;
+        printf("You attack the Goblin and deal %d damage. The Goblin has %d health left.\n", mitigated_damage, goblin->health);
         Sleep(1500);
 
         if (goblin->health <= 0) {
@@ -78,12 +78,11 @@ void orc_encounter(Orc *orc, Player *player) {
     }
 
     while (orc->health > 0) {
-        int attack_damage = random_range(5, 14);  // Player's attack
+        int attack_damage = random_range(5, 10); // Player's attack
         int mitigated_damage = attack_damage - orc->armor;
         if (mitigated_damage < 0) mitigated_damage = 0;
-        printf("You attack the orc and deal %d damage. The orc has %d health left.\n", mitigated_damage, orc->health);
         orc->health -= mitigated_damage;
-        Sleep(1500);
+        printf("You attack the Orc and deal %d damage. The Orc has %d health left.\n", mitigated_damage, orc->health);
 
         if (orc->health <= 0) {
             orc->health = 0;
