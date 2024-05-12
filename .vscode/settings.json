@@ -8,6 +8,10 @@
 		"player.h": "c",
 		"string.h": "c",
 		"goblin.h": "c",
-		"orc.h": "c"
+		"orc.h": "c",
+		"vector": "cpp",
+		"iostream": "cpp",
+		"system_error": "cpp",
+		"xlocale": "cpp"
 	}
 }

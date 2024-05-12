@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include <windows.h>
+//#include <mysql.h> Install MySQL Connector/C 6.1.11 from https://dev.mysql.
 #include "playerdata\player.h"
 #include "npcs\goblin\goblin.h"
 #include "npcs\orc\orc.h"
