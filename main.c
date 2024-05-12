@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <time.h>
 #include <windows.h>
 #include "playerdata\player.h"
@@ -46,56 +47,61 @@ if (save_load == 'l') {
 }
     Sleep(1500);
 
-    // Potentially print out equipped gear for debugging
-    printf("You are equipped with: \nWeapon: %s\nArmor: %s\nShield: %s\n",
-           player.equippedGear[WEAPON].name,
-           player.equippedGear[ARMOR].name,
-           player.equippedGear[SHIELD].name);
+    // While condition to allow the player to play the game until they wish to stop and save, preventing the program from ending prematurely 
+    bool playing_game = 1;
+    while (playing_game) {
 
-    char testAnswer; // Setting up variable to accept y or n for question
-    printf("You are walking down the road, and find an old chest, as you open it you find some armor and weapons, would you like to equip them? Y or N: ");
-    testAnswer = getchar();
-    testAnswer = tolower(testAnswer);
-    if (testAnswer == 'y') {
-        printf("You grab and put on the gear, made of iron, it is stronger then what you currently have on! \n");
-        Gear ironsword = create_iron_sword();
-        Gear ironarmor = create_iron_armor();
-        Gear ironshield = create_iron_shield();
+        // Potentially print out equipped gear for debugging
+        printf("You are equipped with: \nWeapon: %s\nArmor: %s\nShield: %s\n",
+            player.equippedGear[WEAPON].name,
+            player.equippedGear[ARMOR].name,
+            player.equippedGear[SHIELD].name);
 
-        equip_gear(&player, ironsword, WEAPON);
-        equip_gear(&player, ironarmor, ARMOR);
-        equip_gear(&player, ironshield, SHIELD);
-        getchar();
-    } else if (testAnswer == 'n') {
-        printf("You leave the gear inside the chest and move on! \n");
-        getchar();
-    } else {
-        printf("Invalid answer, please enter Y or N: ");
+        char testAnswer; // Setting up variable to accept y or n for question
+        printf("You are walking down the road, and find an old chest, as you open it you find some armor and weapons, would you like to equip them? Y or N: ");
+        testAnswer = getchar();
+        testAnswer = tolower(testAnswer);
+        if (testAnswer == 'y') {
+            printf("You grab and put on the gear, made of iron, it is stronger then what you currently have on! \n");
+            Gear ironsword = create_iron_sword();
+            Gear ironarmor = create_iron_armor();
+            Gear ironshield = create_iron_shield();
+
+            equip_gear(&player, ironsword, WEAPON);
+            equip_gear(&player, ironarmor, ARMOR);
+            equip_gear(&player, ironshield, SHIELD);
+            getchar();
+        } else if (testAnswer == 'n') {
+            printf("You leave the gear inside the chest and move on! \n");
+            getchar();
+        } else {
+            printf("Invalid answer, please enter Y or N: ");
+        }
+
+        //TESTING EQUIP GEAR FUNCTIONS (Remove after all testing done)
+        // Gear ironsword = create_iron_sword();
+        // Gear ironarmor = create_iron_armor();
+        // Gear ironshield = create_iron_shield();
+
+        // equip_gear(&player, ironsword, WEAPON);
+        // equip_gear(&player, ironarmor, ARMOR);
+        // equip_gear(&player, ironshield, SHIELD);
+
+        save_player_data();
+        printf("Player %s is equipped with:\n", player.playerName);
+        printf("Weapon: %s\n", player.equippedGear[WEAPON].name);
+        printf("Armor: %s\n", player.equippedGear[ARMOR].name);
+        printf("Shield: %s\n", player.equippedGear[SHIELD].name);
+        //FUNCTIONS CORRECT (Test later switch cases for equipping gear from loot table or bought in shops)
+
+        // Goblin encounter test
+        Goblin goblin = {.health = 15, .power = 5, .armor = 3};
+        goblin_encounter(&goblin, &player);
+
+        // Orc counter test
+        // Orc orc = {.health = 35, .power = 10, .armor = 5};
+        // orc_encounter(&orc, &player);
+
+        return 0;
     }
-
-    //TESTING EQUIP GEAR FUNCTIONS (Remove after all testing done)
-    // Gear ironsword = create_iron_sword();
-    // Gear ironarmor = create_iron_armor();
-    // Gear ironshield = create_iron_shield();
-
-    // equip_gear(&player, ironsword, WEAPON);
-    // equip_gear(&player, ironarmor, ARMOR);
-    // equip_gear(&player, ironshield, SHIELD);
-
-    save_player_data();
-    printf("Player %s is equipped with:\n", player.playerName);
-    printf("Weapon: %s\n", player.equippedGear[WEAPON].name);
-    printf("Armor: %s\n", player.equippedGear[ARMOR].name);
-    printf("Shield: %s\n", player.equippedGear[SHIELD].name);
-    //FUNCTIONS CORRECT (Test later switch cases for equipping gear from loot table or bought in shops)
-
-    // Goblin encounter test
-    Goblin goblin = {.health = 15, .power = 5, .armor = 3};
-    goblin_encounter(&goblin, &player);
-
-    // Orc counter test
-    // Orc orc = {.health = 35, .power = 10, .armor = 5};
-    // orc_encounter(&orc, &player);
-
-    return 0;
 }
