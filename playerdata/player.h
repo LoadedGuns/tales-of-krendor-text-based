@@ -11,6 +11,7 @@ typedef struct {
     char playerName[20];
     int health;
     int gold;
+    int fishingLevel;
     Gear equippedGear[3];  // Array to hold one of each type of gear
 } Player;
 

@@ -2,9 +2,10 @@
 #include "../gear/gear.h"
 #include <stdio.h>
 #include <string.h>
+#include "../skills/fishing/fishing.h"
 
 // Assuming 'player' is a global variable here, if not, pass it around as needed.
-Player player = { .health = 100, .gold = 50 };  // Default starting values
+Player player = { .health = 100, .gold = 50, .fishingLevel = 1 };  // Default starting values
 
 void set_player_name(const char *name) {
     strncpy(player.playerName, name, sizeof(player.playerName) - 1);
@@ -41,7 +42,7 @@ void save_player_data(void) {
     FILE *file = fopen("playerdata.txt", "w");
     if (file != NULL) {
         // Saves player details
-        fprintf(file, "Name: %s\nHealth: %d\nGold: %d\n", player.playerName, player.health, player.gold);
+        fprintf(file, "Name: %s\nHealth: %d\nGold: %d\nFishing Level: %d\n", player.playerName, player.health, player.gold, player.fishingLevel);
         
         // Saves player gear
         fprintf(file, "Weapon: %s\n", player.equippedGear[WEAPON].name);
@@ -59,7 +60,7 @@ void load_player_data(void) {
     FILE *file = fopen("playerdata.txt", "r");
     if (file != NULL) {
         // Loads player details
-        fscanf(file, "Name: %49[^\n]\nHealth: %d\nGold: %d\n", player.playerName, &player.health, &player.gold);
+        fscanf(file, "Name: %49[^\n]\nHealth: %d\nGold: %d\nFishing Level: %d\n", player.playerName, &player.health, &player.gold, &player.fishingLevel);
 
         // Loads player gear
         fscanf(file, "Weapon: %49[^\n]\n", player.equippedGear[WEAPON].name);
